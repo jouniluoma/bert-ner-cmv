@@ -151,6 +151,7 @@ def main(argv):
 
 
     else:
+        method2 = []
         pr_ensemble, pr_test_first = get_predictions(preds, test_data.tokens, test_data.sentence_numbers)
         prob_ensemble, prob_test_first = get_predictions2(probs, test_data.tokens, test_data.sentence_numbers)
         ens1 = [pr_ensemble, prob_ensemble, pr_test_first, prob_test_first]
