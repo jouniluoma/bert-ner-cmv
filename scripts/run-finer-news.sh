@@ -43,5 +43,6 @@ python "$SCRIPTDIR/../ner.py" \
     --train_data "$train_data" \
     --test_data "$test_data" \
     --ner_model_dir "$ner_model_dir" \
-    --predict_position 0 \
-    --use_ner_model 
+
+# if your data has document tags
+#    --documentwise \
