@@ -11,7 +11,7 @@ os.environ['TF_KERAS'] = '1'
 
 from tensorflow import keras
 #import keras
-from bert import tokenization
+import bert_tokenization import tokenization
 from keras_bert import load_trained_model_from_checkpoint, AdamWarmup
 from keras_bert import calc_train_steps, get_custom_objects
 
