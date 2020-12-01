@@ -48,6 +48,7 @@ python "$SCRIPTDIR/../ner.py" \
     --ner_model_dir "$ner_model_dir" \
     --output_file "turku-ner" \
 
+
 # if your data has document tags
 #    --documentwise \
 
@@ -56,3 +57,6 @@ python "$SCRIPTDIR/../ner.py" \
 
 # Sentence in context evaluations on trained model
 #   --sentence_in_context
+
+# Use pretrained model for evaluation
+#    --use_ner_model
