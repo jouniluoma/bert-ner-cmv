@@ -43,7 +43,7 @@ python "$SCRIPTDIR/../ner.py" \
     --train_data "$train_data" \
     --test_data "$test_data" \
     --ner_model_dir "$ner_model_dir" \
-    --output_file "./results/output" \
+    --output_file "finer" \
 
 # if your data has document tags
 #    --documentwise \
