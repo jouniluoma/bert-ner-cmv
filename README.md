@@ -3,7 +3,7 @@ CMV implementation for Named Entity Recognition with BERT
  
 ## Dependencies:
 
-bert (added as submodule to this project. FullTokenizer is used instead of keras-bert tokenizer)
+bert: tokenization.py (added as bert_tokenization.py to this project. FullTokenizer is used instead of keras-bert tokenizer)
 
 keras-bert (https://pypi.org/project/keras-bert/)
 
@@ -13,6 +13,7 @@ Pretrained BERT model, e.g. from:
 
 input data e.g. from:
 - https://github.com/mpsilfve/finer-data
+- https://github.com/TurkuNLP/turku-ner-corpus
 
 Input data is expected to be in CONLL:ish format where Token and Tag are tab separated. 
 First string on the line corresponds to Token and second string to Tag
