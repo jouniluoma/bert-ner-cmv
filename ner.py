@@ -143,7 +143,7 @@ def main(argv):
             print("")
             conlleval.report(c)
             results.append([conlleval.metrics(c)[0].prec, conlleval.metrics(c)[0].rec, conlleval.metrics(c)[0].fscore])
-            m_names.extedm(method_names)
+            m_names.extend(method_names)
 
         
     if args.sentence_in_context:     
