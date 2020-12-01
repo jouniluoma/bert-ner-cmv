@@ -11,7 +11,7 @@ os.environ['TF_KERAS'] = '1'
 
 from tensorflow import keras
 #import keras
-import bert_tokenization import tokenization
+import bert_tokenization as tokenization
 from keras_bert import load_trained_model_from_checkpoint, AdamWarmup
 from keras_bert import calc_train_steps, get_custom_objects
 
@@ -100,6 +100,11 @@ def argument_parser(mode='train'):
         '--no_context', default=False, action='store_true',
         help='Do not use context in training or predict'
     ) 
+    argparser.add_argument(
+        '--sentence_in_context', default=False, action='store_true',
+        help = 'Sentence in context results'
+    )
+    
     argparser.add_argument(
         '--documentwise', default=False, action='store_true',
         help='Make samples documentwise'
@@ -450,56 +455,6 @@ def combine_sentences(lines, tags, lengths, max_seq):
         lines_in_sample.append(line_numbers)
     return new_lines, new_tags, lines_in_sample
 
-""" def combine_sentences2(lines, tags, max_seq, start=0):
-    linelens = []
-    new_lines = []
-    new_tags = []
-    
-    for i, line in enumerate(lines):
-        #linelens = [i]
-        new_line = [0]*start
-        new_line.extend(line)
-        new_tag = [0]*start
-        new_tag.extend(tags[i])
-        j = 1
-        linelen = len(lines[(i+j)%len(lines)])
-        while (len(new_line) + linelen) < max_seq-2:
-            new_line.append('[SEP]')
-            new_tag.append('[SEP]')
-            new_line.extend(lines[(i+j)%len(lines)])
-            new_tag.extend(tags[(i+j)%len(tags)])
-            #line_numbers.append((i+j)%len(lines))
-            j += 1
-            linelen = len(lines[(i+j)%len(lines)])
-
-        #lines_in_sample.append(line_numbers)
-        counter = start
-        j=1
-        ready = False
-        while not ready:
-            #print(i,j)
-            prev_line = lines[i-j][:]
-            prev_tags = tags[i-j][:]
-            prev_line.append('[SEP]')
-            prev_tags.append('[SEP]')
-            #print(len(prev_line), len(prev_tags))
-            if len(prev_line)< counter:
-                new_line[(counter-len(prev_line)):counter]=prev_line
-                new_tag[(counter-len(prev_line)):counter]=prev_tags
-                counter -= len(prev_line)
-                j+=1
-            else:
-                if counter > 2:
-                    new_line[0:counter] = prev_line[-counter:]
-                    new_tag[0:counter] = prev_tags[-counter:]
-                    ready = True
-                else:
-                    new_line[0:counter] = ['[PAD]']*counter
-                    new_tag[0:counter] = ['O']*counter
-                    ready = True
-        new_lines.append(new_line)
-        new_tags.append(new_tag)           
-    return new_lines, new_tags #, lines_in_sample """
 
 def combine_sentences2(lines, tags, max_seq, start=0):
     lines_in_sample = []
