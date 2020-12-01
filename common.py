@@ -150,13 +150,13 @@ def save_ner_model(ner_model, tokenizer, labels, options):
         'do_lower_case': options.do_lower_case,
         'max_seq_length': options.max_seq_length,
     }
-    with open(_ner_config_path(options.ner_model_dir), 'w') as out:
+    with open(_ner_config_path(options.ner_model_dir), 'w+') as out:
         json.dump(config, out, indent=4)
     ner_model.save(_ner_model_path(options.ner_model_dir))
-    with open(_ner_labels_path(options.ner_model_dir), 'w') as out:
+    with open(_ner_labels_path(options.ner_model_dir), 'w+') as out:
         for label in labels:
             print(label, file=out)
-    with open(_ner_vocab_path(options.ner_model_dir), 'w') as out:
+    with open(_ner_vocab_path(options.ner_model_dir), 'w+') as out:
         for i, v in sorted(list(tokenizer.inv_vocab.items())):
             print(v, file=out)
 
