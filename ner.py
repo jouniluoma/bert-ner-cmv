@@ -56,14 +56,6 @@ def main(argv):
     train_y, train_weights = label_encode(train_data.combined_labels, tag_map, seq_len)
     test_y, test_weights = label_encode(test_data.combined_labels, tag_map, seq_len)
 
- #   if args.documentwise:
- #       train_x_docwise = encode(train_docwise.combined_tokens, tokenizer, seq_len)
- #       test_x_docwise = encode(test_docwise.combined_tokens, tokenizer, seq_len)
- #       train_y_docwise, train_weights_docwise = label_encode(
- #           train_docwise.combined_labels, tag_map, seq_len)
- #       test_y_docwise, test_weights_docwise = label_encode(
- #           test_docwise.combined_labels, tag_map, seq_len)
-
 
     if args.use_ner_model and (args.ner_model_dir is not None):
         ner_model, tokenizer, labels, config = load_ner_model(args.ner_model_dir)
@@ -93,9 +85,6 @@ def main(argv):
             label_list = [v for k, v in sorted(list(inv_tag_map.items()))]
             save_ner_model(ner_model, tokenizer, label_list, args)
 
-    #if args.documentwise:
-    #    probs_docwise = ner_model.predict(test_x_docwise, batch_size=args.batch_size)
-    #    preds_docwise = np.argmax(probs_docwise, axis=-1)
     
     probs = ner_model.predict(test_x, batch_size=args.batch_size)
     preds = np.argmax(probs, axis=-1)
@@ -116,7 +105,7 @@ def main(argv):
         c = conlleval.evaluate(lines_ensemble)
         conlleval.report(c)
         results.append([conlleval.metrics(c)[0].prec, conlleval.metrics(c)[0].rec, conlleval.metrics(c)[0].fscore])
-#        result_file = "./results/results-{}.csv".format(args.output_file)
+
 
 
     else:

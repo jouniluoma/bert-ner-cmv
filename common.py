@@ -93,7 +93,7 @@ def argument_parser(mode='train'):
         help='File to write predicted outputs to'
     )
     argparser.add_argument(
-        '--ner_model_dir', default='ner-model',
+        '--ner_model_dir', default=None,
         help='Trained NER model directory'
     )
     argparser.add_argument(
