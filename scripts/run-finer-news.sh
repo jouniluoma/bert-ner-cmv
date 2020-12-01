@@ -43,6 +43,13 @@ python "$SCRIPTDIR/../ner.py" \
     --train_data "$train_data" \
     --test_data "$test_data" \
     --ner_model_dir "$ner_model_dir" \
+    --output_file "./results/output" \
 
 # if your data has document tags
 #    --documentwise \
+
+# for method "Single"
+#   --no_context \
+
+# Sentence in context evaluations on trained model
+#   --sentence_in_context
