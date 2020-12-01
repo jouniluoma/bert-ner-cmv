@@ -19,13 +19,6 @@ First string on the line corresponds to Token and second string to Tag
   
 ## Quickstart
 
-Get submodules
-
-```
-git submodule init
-git submodule update
-```
-
 Get pretrained models and data
 
 ```
