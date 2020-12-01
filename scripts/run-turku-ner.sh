@@ -32,7 +32,6 @@ if [ ! -e "$modeldir" ]; then
     exit 1
 fi
 
-rm -rf "$ner_model_dir"
 mkdir -p "$ner_model_dir"
 
 python "$SCRIPTDIR/../ner.py" \
@@ -59,4 +58,4 @@ python "$SCRIPTDIR/../ner.py" \
 #   --sentence_in_context
 
 # Use pretrained model for evaluation
-#    --use_ner_model
+#    --use_ner_model \
