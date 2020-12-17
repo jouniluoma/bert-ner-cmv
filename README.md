@@ -1,5 +1,6 @@
 # bert-ner-cmv
-CMV implementation for Named Entity Recognition with BERT. 
+Code for paper: Exploring Cross-sentence Contexts for Named Entity Recognition with BERT
+https://www.aclweb.org/anthology/2020.coling-main.78/
  
 ## Dependencies:
 
