@@ -1,6 +1,6 @@
 # bert-ner-cmv
 Code for paper: Exploring Cross-sentence Contexts for Named Entity Recognition with BERT
-https://www.aclweb.org/anthology/2020.coling-main.78/
+https://aclanthology.org/2020.coling-main.78.pdf
  
 ## Dependencies:
 
